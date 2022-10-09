@@ -35,4 +35,42 @@ This image contains:
 - Redis
 - PHP extensions: intl pdo_pgsql gd zip pdo_mysql
 
+## Versions
+
+Use `sdk:latest` for latest build or use wanted version e.g. `sdk:8.1.6`.
+
+## Usage
+
+For docker you can use `docker pull ghcr.io/maymeow/php/{imagename}:latest` where image name is `sdk` or `runtime`.
+
+In docker compose use:
+
+```yml
+image: ghcr.io/maymeow/php/runtime:latest
+# Or for SDK
+image: ghcr.io/maymeow/php/sdk:latest
+```
+### Creating image for production environment
+
 Runtime image does not contains composer so you need to install all composer dependencies first.
+
+You can create image with multistep build like this
+
+```Dockerfile
+FROM ghcr.io/maymeow/php/sdk:latest AS build-env
+
+WORKDIR /app
+COPY . /app
+RUN composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --optimize-autoloader #--no-scripts
+
+FROM ghcr.io/maymeow/php/runtime:latest
+
+ARG user=www-data
+COPY --from=build-env /app /var/www
+RUN chown -R $user:$user /var/www
+WORKDIR /var/www
+RUN chmod -R 777 /var/www/logs
+USER $user
+```
+
+License: MIT
