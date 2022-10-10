@@ -2,6 +2,8 @@
 
 Docker images that can be used for applicaiton development/ci-cd and for production. These images are based on official [PHP images](https://hub.docker.com/_/php)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D5DMOTA)
+
 ## SDK
 
 Images for use in CI/CD and for application development
