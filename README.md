@@ -13,14 +13,14 @@ Images for use in CI/CD and for application development
 This image contains:
 
 - NodeJS and NPM
-- Yarn
+- [Yarn](https://yarnpkg.com/)
 - Codesniffer
   - phpcs
   - phpcbf
   - php-cs-fixer
 - PSALM
 - PHPUnit
-- Xdebug
+- [Xdebug](https://xdebug.org/)
 - Redis
 - PHP Extensions: intl pdo_pgsql gd zip pdo_mysql
 - phar-composer
