@@ -8,34 +8,34 @@ Docker images that can be used for applicaiton development/ci-cd and for product
 
 Images for use in CI/CD and for application development
 
-- Based on php-cli
+- Based on [php-cli](http://www.php-cli.com/)
 
 This image contains:
 
-- NodeJS and NPM
+- [NodeJS](https://nodejs.org/en) and [NPM](https://www.npmjs.com/)
 - [Yarn](https://yarnpkg.com/)
-- Codesniffer
+- [Codesniffer](https://github.com/squizlabs/PHP_CodeSniffer)
   - phpcs
   - phpcbf
-  - php-cs-fixer
-- PSALM
-- PHPUnit
+  - [php-cs-fixer](https://github.com/PHP-CS-Fixer)
+- [PSALM](https://psalm.dev/)
+- [PHPUnit](https://phpunit.de/)
 - [Xdebug](https://xdebug.org/)
-- Redis
-- PHP Extensions: intl pdo_pgsql gd zip pdo_mysql
-- phar-composer
+- [Redis](https://redis.io/)
+- PHP Extensions: [intl](https://www.php.net/manual/en/book.intl.php) [pdo_pgsql](https://www.php.net/manual/en/ref.pdo-pgsql.php) [gd](https://www.php.net/manual/en/book.image.php) [zip](https://www.php.net/manual/en/book.zip.php) [pdo_mysql](https://www.php.net/manual/en/ref.pdo-mysql.php)
+- [phar-composer](https://github.com/clue/phar-composer)
   - Image has set phar.readonly to 0 (zero) to allows you to create phar files 
 
 ## Runtime
 
 This image can be used for application in production environment
 
-- based on php-fpm
+- based on [php-fpm](https://www.php.net/manual/en/install.fpm.php)
 
 This image contains:
 
-- Redis
-- PHP extensions: intl pdo_pgsql gd zip pdo_mysql
+- [Redis](https://redis.io/)
+- PHP extensions: [intl](https://www.php.net/manual/en/book.intl.php) [pdo_pgsql](https://www.php.net/manual/en/ref.pdo-pgsql.php) [gd](https://www.php.net/manual/en/book.image.php) [zip](https://www.php.net/manual/en/book.zip.php) [pdo_mysql](https://www.php.net/manual/en/ref.pdo-mysql.php)
 
 ## Versions
 
