@@ -73,7 +73,7 @@ RUN apt autoremove --purge \
 
 # test PHP
 RUN php -v
-RUN composer -v
+# RUN composer -v
 RUN phpunit --version
 RUN node -v
 RUN npm -v
