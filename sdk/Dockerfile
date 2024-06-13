@@ -1,7 +1,7 @@
 FROM php:8.2.20-cli-bullseye
 
 # Install NodeJS and NPM
-RUN curl -sSL https://deb.nodesource.com/setup_12.x | bash \
+RUN curl -sSL https://deb.nodesource.com/setup_20.x | bash \
     && apt-get update \
     && apt-get install --fix-missing -y nodejs unzip libicu-dev libpq-dev zlib1g-dev libpng-dev libzip-dev git
 
@@ -72,10 +72,10 @@ RUN apt autoremove --purge \
     && apt clean
 
 # test PHP
-RUN php -v \
-    && composer -v \
-    && phpunit --version \
-    && node -v \
-    && npm -v \
-    && phar-composer --version \
-    && psalm --version
+RUN php -v
+RUN composer -v
+RUN phpunit --version
+RUN node -v
+RUN npm -v
+RUN phar-composer --version
+RUN psalm --version
