@@ -25,7 +25,7 @@ RUN apt autoremove --purge -y \
 # RUN mkdir -p /home/$user/.composer && \
 #     chown -R $user:$user /home/$user
 
-RUN groupadd -f $PGID www-data && \
+RUN groupmod -g $PGID www-data && \
     usermod -u $PUID -g $PGID -d $HOME_DIR www-data && \
     mkdir -p $HOME_DIR && \
     chown -R www-data:www-data $HOME_DIR && \
