@@ -1,4 +1,4 @@
-FROM php:8.2.20-cli-bullseye
+FROM php:8.2.27-cli-bullseye
 
 # Install NodeJS and NPM
 RUN curl -sSL https://deb.nodesource.com/setup_20.x | bash \
