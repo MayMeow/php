@@ -66,12 +66,11 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository }}/${{ matrix.php }}-${{ matrix.image_version }}
-          DESIRED_IMAGE_ID=ghcr.io/${{ github.repository }}/${{ matrix.image_version }}
+          IMAGE_ID=ghcr.io/${{ github.repository }}/${{ matrix.image_version }}
+          IMAGE_NAME=${{ matrix.php }}-${{ matrix.image_version }}
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-          DESIRED_IMAGE_ID=$(echo $DESIRED_IMAGE_ID | tr '[A-Z]' '[a-z]')
 
           # Strip git ref prefix from version
           # VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
@@ -86,5 +85,5 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=${{ matrix.php }}
 
-          docker tag $IMAGE_NAME $DESIRED_IMAGE_ID:$VERSION
-          docker push $DESIRED_IMAGE_ID:$VERSION
+          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
