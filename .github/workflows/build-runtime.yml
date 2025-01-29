@@ -15,21 +15,20 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: runtime
+  # IMAGE_NAME: runtime
 
 jobs:
-  build_matrix:
-    strategy:
-      matrix:
-        php:
-          - 8.2
-        image_version:
-          - runtime
-          - sdk
-  runs-on: ubuntu-latest
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
   test:
+    strategy:
+        matrix:
+          php:
+            - 8.2
+          image_version:
+            - runtime
+            - sdk
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -48,7 +47,14 @@ jobs:
     # Ensure test job passes before pushing image.
     needs: test
     if: github.event_name == 'push'
-
+    strategy:
+      matrix:
+        php:
+          - 8.2
+        image_version:
+          - runtime
+          - sdk
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
