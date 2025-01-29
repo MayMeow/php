@@ -5,6 +5,7 @@ on:
     # Publish `main` as Docker `latest` image.
     branches:
       - main
+      - 'dev/**'
 
     # Publish `v1.2.3` tags as releases.
     tags:
@@ -25,6 +26,7 @@ jobs:
         matrix:
           php:
             - 8.2
+            - 8.3
           image_version:
             - runtime
             - sdk
@@ -46,7 +48,7 @@ jobs:
   push:
     # Ensure test job passes before pushing image.
     needs: test
-    if: github.event_name == 'push'
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     strategy:
       matrix:
         php:
@@ -67,7 +69,7 @@ jobs:
           --label org.opencontainers.image.revision="${{ github.sha }}" \
           --label org.opencontainers.image.created="$(date --rfc-3339=seconds)" \
           --label org.opencontainers.image.title="${{ matrix.php }}-${{ matrix.image_version }}" \
-          --label org.opencontainers.image.description="Docker image for PHP ${{ matrix.php }} ${{ matrix.image_version }}" \
+          --label org.opencontainers.image.description="Docker image for PHP ${{ matrix.php }} ${{ matrix.image_version }}"
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
