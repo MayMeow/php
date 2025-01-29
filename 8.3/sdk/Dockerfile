@@ -40,20 +40,20 @@ RUN wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar \
     && chmod +x phpcbf.phar \
     && mv phpcbf.phar /usr/local/bin/phpcbf
 
-RUN wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v3.8.0/php-cs-fixer.phar \
+RUN wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v3.68.3/php-cs-fixer.phar \
     && chmod +x php-cs-fixer.phar \
     && mv php-cs-fixer.phar /usr/local/bin/php-cs-fixer
 
 ## PSALM
 
-RUN wget https://github.com/vimeo/psalm/releases/download/4.23.0/psalm.phar \
+RUN wget https://github.com/vimeo/psalm/releases/download/6.0.0/psalm.phar \
     && chmod +x psalm.phar \
     && mv psalm.phar /usr/local/bin/psalm
 
 ## PHPUnit install
-RUN wget https://phar.phpunit.de/phpunit-9.5.20.phar \
-    && chmod +x phpunit-9.5.20.phar \
-    && mv phpunit-9.5.20.phar /usr/local/bin/phpunit
+RUN wget https://phar.phpunit.de/phpunit-11.5.0.phar \
+    && chmod +x phpunit-11.5.0.phar \
+    && mv phpunit-11.5.0.phar /usr/local/bin/phpunit
     
 RUN pecl install xdebug \ 
     && docker-php-ext-enable xdebug \
