@@ -26,11 +26,10 @@ jobs:
         image_version:
           - runtime
           - sdk
+  runs-on: ubuntu-latest
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
   test:
-    runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
 
@@ -48,8 +47,6 @@ jobs:
   push:
     # Ensure test job passes before pushing image.
     needs: test
-
-    runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
     steps:
